@@ -1,0 +1,14 @@
+{
+  "patch_id": "prefix-retention-slru-v1",
+  "original_sha256": {
+    "v1/core/block_pool.py": "a76ec867f1425898411a325cfbfee81e97cc128739724e74a988160240d5db0b",
+    "v1/core/kv_cache_manager.py": "49ad2f04469968b15d8783b565dbbaf9b50739d361cb4166a4c41c6f86170c61",
+    "v1/core/kv_cache_utils.py": "71af5667202f3dab4db2a861ab2a4fcfc3bfe72619eee2ab17693e481b8b4aa8",
+    "v1/core/single_type_kv_cache_manager.py": "3d944f3bfa8c0357620ce8f09b3366ad8a4b5ffd2c12787b8020b16540f9a881",
+    "v1/core/sched/scheduler.py": "a681594d25a0928809ea7aa020c7410baee6bf2dbe681d55582a4b5e6b9e15fc"
+  },
+  "payload_sha256": {
+    "block_pool.py": "99373c76effaa1127dcd673af04c04da7754fe186887334cde9b226626fa2ed4",
+    "prefix_retention.py": "45e1809df1f7fe40f429845bbfa15f1e4ce5e39c530b95c3788736b89ee24366"
+  }
+}

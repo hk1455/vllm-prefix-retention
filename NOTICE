@@ -1,0 +1,14 @@
+This project contains vLLM source files under the Apache License, Version 2.0.
+Upstream: https://github.com/vllm-project/vllm
+
+The reference/ directory preserves the vLLM 0.9.2 source snapshot used by the
+Jetson experiments. Original SPDX and contributor copyright notices are retained.
+Exact source hashes are recorded in manifest.json and reference/environment.json.
+
+payload/block_pool.py modifies the reference BlockPool to select a retention
+queue, record actual reuse and reset retention history. See block_pool.patch.
+payload/prefix_retention.py adds the experimental SLRU implementation.
+Companion benchmark, installation and diagnostic scripts are Apache-2.0 licensed.
+
+This is an independent experimental project, not an official vLLM release.
+See LICENSE for the full license text.

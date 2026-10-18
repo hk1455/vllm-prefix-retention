@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "token_ids_sha256": "c230d5159d107c81f1529caa6d801de56089d92f41d32c1914b89f04f5af210d",
+  "requests": 30,
+  "prompt_tokens": 3085,
+  "ttft_ms_mean": 4603.280293600013,
+  "ttft_ms_p50": 4589.706820999709,
+  "ttft_ms_p95": 4631.491915899278,
+  "all_cached_tokens_zero": true,
+  "reset_time_excluded": true
+}

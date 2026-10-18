@@ -1,0 +1,2 @@
+# Client and mock-HTTP tests only. Install vLLM/CUDA separately on Jetson.
+aiohttp>=3.9,<4

@@ -1,0 +1,17 @@
+{
+  "vllm_version": "0.9.2",
+  "python": "3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0]",
+  "python_executable": "/opt/venv/bin/python3",
+  "architecture": "aarch64",
+  "vllm_root": "/opt/venv/lib/python3.12/site-packages/vllm",
+  "files_sha256": {
+    "v1/core/block_pool.py": "a76ec867f1425898411a325cfbfee81e97cc128739724e74a988160240d5db0b",
+    "v1/core/kv_cache_manager.py": "49ad2f04469968b15d8783b565dbbaf9b50739d361cb4166a4c41c6f86170c61",
+    "v1/core/kv_cache_utils.py": "71af5667202f3dab4db2a861ab2a4fcfc3bfe72619eee2ab17693e481b8b4aa8",
+    "v1/core/single_type_kv_cache_manager.py": "3d944f3bfa8c0357620ce8f09b3366ad8a4b5ffd2c12787b8020b16540f9a881",
+    "v1/core/sched/scheduler.py": "a681594d25a0928809ea7aa020c7410baee6bf2dbe681d55582a4b5e6b9e15fc"
+  },
+  "missing_files": [
+    "v1/core/kv_cache_coordinator.py"
+  ]
+}

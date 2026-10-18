@@ -1,0 +1,80 @@
+{
+  "description": "Curated summary exports. Numeric measurements, workload fingerprints, and client settings are preserved. Endpoint/output paths, free-form warnings and interpretation text are omitted. Raw machine/process logs are not published.",
+  "archives": {
+    "formal_summaries.tar.gz": {
+      "sha256": "3701b4c4b1e0fc2180f960ac206958a3fb1ff712f5e121a0a77bf106a738e829",
+      "exports": [
+        {
+          "member": "results/lru_b2048_s42_formal_r1/summary.json",
+          "file": "benchmarks/published/lru_s42.json"
+        },
+        {
+          "member": "results/lru_b2048_s43_formal_r1/summary.json",
+          "file": "benchmarks/published/lru_s43.json"
+        },
+        {
+          "member": "results/lru_b2048_s44_formal_r1/summary.json",
+          "file": "benchmarks/published/lru_s44.json"
+        },
+        {
+          "member": "results/slru_b2048_s42_formal_r2/summary.json",
+          "file": "benchmarks/history/slru_s42.json"
+        },
+        {
+          "member": "results/slru_b2048_s43_formal_r2/summary.json",
+          "file": "benchmarks/history/slru_s43.json"
+        },
+        {
+          "member": "results/slru_b2048_s44_formal_r2/summary.json",
+          "file": "benchmarks/history/slru_s44.json"
+        }
+      ]
+    },
+    "slru_long_20261015_results_r2.tar.gz": {
+      "sha256": "ef1b0662ef4f010484364fb374dc2963d0bff641deac514338639efcb2ed1b7e",
+      "exports": [
+        {
+          "member": "results/slru_b2048_s42_morning_20261015_r2/summary.json",
+          "file": "benchmarks/published/slru_s42.json"
+        },
+        {
+          "member": "results/slru_b2048_s43_morning_20261015_r2/summary.json",
+          "file": "benchmarks/published/slru_s43.json"
+        },
+        {
+          "member": "results/slru_b2048_s44_morning_20261015_r2/summary.json",
+          "file": "benchmarks/published/slru_s44.json"
+        }
+      ]
+    },
+    "aba_diag_r1.tar.gz": {
+      "sha256": "284e5ce8a1483acdb223151cfc5ad535adc6d73fb6950b9870935752bdcc7d25",
+      "exports": [
+        {
+          "member": "aba_diag_r1/01_lru/zipf/summary.json",
+          "file": "benchmarks/aba/01_lru_zipf.json"
+        },
+        {
+          "member": "aba_diag_r1/01_lru/cold/summary.json",
+          "file": "benchmarks/aba/01_lru_cold.json"
+        },
+        {
+          "member": "aba_diag_r1/02_slru/zipf/summary.json",
+          "file": "benchmarks/aba/02_slru_zipf.json"
+        },
+        {
+          "member": "aba_diag_r1/02_slru/cold/summary.json",
+          "file": "benchmarks/aba/02_slru_cold.json"
+        },
+        {
+          "member": "aba_diag_r1/03_lru/zipf/summary.json",
+          "file": "benchmarks/aba/03_lru_zipf.json"
+        },
+        {
+          "member": "aba_diag_r1/03_lru/cold/summary.json",
+          "file": "benchmarks/aba/03_lru_cold.json"
+        }
+      ]
+    }
+  }
+}

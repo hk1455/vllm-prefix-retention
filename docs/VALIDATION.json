@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-18",
+  "host": "Windows x86_64",
+  "scope": "CPU source-level tests and local mock HTTP services; no new Jetson benchmark",
+  "command": "python scripts/run_tests.py",
+  "tests": {
+    "runtime_lifecycle": 16,
+    "installer": 5,
+    "comparison": 2,
+    "smoke_protocol": 8,
+    "benchmark_mock_http": 7,
+    "diagnostics_guards_and_mock_http": 7
+  },
+  "total_passed": 45,
+  "randomized_runtime_operations": 6000,
+  "lru_differential_operations": 2400,
+  "source_hashes": "All reference and payload files match manifest.json",
+  "bash_syntax": "start_server.sh and run_bench.sh passed bash -n",
+  "results": "Published summary pairs passed configuration/trace checks; aggregate headline metrics recomputed",
+  "hardware_results": "Existing Jetson measurements are documented in RESULTS_ZH.md and benchmarks/"
+}

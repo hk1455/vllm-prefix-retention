@@ -1,0 +1,63 @@
+--- a/vllm/v1/core/block_pool.py
++++ b/vllm/v1/core/block_pool.py
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: Apache-2.0
+ # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
++import os
+ from collections import defaultdict
+ from collections.abc import Iterable
+ from typing import Callable, Optional
+@@ -11,6 +12,7 @@
+                                          KVCacheBlock,
+                                          generate_block_hash_extra_keys,
+                                          hash_block_tokens)
++from vllm.v1.core.prefix_retention import SegmentedFreeBlockQueue
+ from vllm.v1.request import Request
+ 
+ logger = init_logger(__name__)
+@@ -45,7 +47,23 @@
+         # Free block queue that constructs and manipulates a doubly linked
+         # list of free blocks (including eviction candidates when caching is
+         # enabled).
+-        self.free_block_queue = FreeKVCacheBlockQueue(self.blocks)
++        # PREFIX_RETENTION_PATCH_V1: keep the original queue in baseline mode.
++        policy = os.environ.get("VLLM_PREFIX_RETENTION_POLICY", "lru").lower()
++        if policy not in ("lru", "slru"):
++            raise ValueError("VLLM_PREFIX_RETENTION_POLICY must be lru or slru")
++        self._retention_queue = None
++        if policy == "slru" and enable_caching:
++            ratio = float(os.environ.get(
++                "VLLM_PREFIX_RETENTION_PROTECTED_RATIO", "0.5"))
++            self._retention_queue = SegmentedFreeBlockQueue(self.blocks, ratio)
++            self.free_block_queue = self._retention_queue
++            logger.info("PREFIX_RETENTION policy=slru protected_ratio=%s "
++                        "protected_limit=%d", ratio,
++                        self._retention_queue.protected_limit)
++        else:
++            self.free_block_queue = FreeKVCacheBlockQueue(self.blocks)
++            logger.info("PREFIX_RETENTION policy=lru prefix_caching=%s",
++                        enable_caching)
+ 
+         # {block_hash: {block ID: block}}. A cached block is
+         # a full block with a block hash that can be used for prefix caching.
+@@ -255,6 +273,8 @@
+             # candidate), so remove it.
+             if block.ref_cnt == 0 and not block.is_null:
+                 self.free_block_queue.remove(block)
++            if self._retention_queue is not None:
++                self._retention_queue.record_hit(block)
+             block.incr_ref()
+ 
+     def free_blocks(self, ordered_blocks: Iterable[KVCacheBlock]) -> None:
+@@ -294,6 +314,11 @@
+         for block in self.blocks:
+             block.reset_hash()
+ 
++        if self._retention_queue is not None:
++            logger.info("PREFIX_RETENTION before_reset=%s",
++                        self._retention_queue.stats())
++            self._retention_queue.reset_history()
++
+         logger.info("Successfully reset prefix cache")
+ 
+         if self.enable_kv_cache_events:
